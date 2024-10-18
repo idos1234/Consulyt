@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "180512000245",
+    "project_id": "consulyt-112fa",
+    "storage_bucket": "consulyt-112fa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:180512000245:android:1c2abcc1009e953e939dbc",
+        "android_client_info": {
+          "package_name": "com.example.consulyt_connection_between_business_and_consultants"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDndyokmhzDfJdhEmLiInfzqggdEU1rAnw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
