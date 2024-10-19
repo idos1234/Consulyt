@@ -35,14 +35,14 @@ class BusinessOwner {
 class Consultant {
   String name;
   String industry;
-  int yearsOfExperience;
+  String yearsOfExperience;
   String qualificationsOrCertifications;
   String rates;
   List<Float> rating = List.empty(growable: true);
   String specializations;
   Location location;
   //in what days the consultant is available
-  List<int> availability;
+  String availability;
 
   Consultant(
     {
@@ -56,6 +56,19 @@ class Consultant {
       required this.availability
     }
   );
+
+  Map<String, dynamic> toJson() => {
+        'name': name,
+        'industry': industry,
+        'yearsOfExperience': yearsOfExperience,
+        'qualificationsOrCertifications': qualificationsOrCertifications,
+        'rates': rates,
+        'rating': rating,
+        'specializations': specializations,
+        'location': location.toJson(),
+        'availability': availability
+      };
+
 }
 
 class Location{

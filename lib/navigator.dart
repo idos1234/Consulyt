@@ -1,4 +1,6 @@
+import 'package:consulyt_connection_between_business_and_consultants/pages/signin/businessOrConsultant.dart';
 import 'package:consulyt_connection_between_business_and_consultants/pages/signin/businessSetUp.dart';
+import 'package:consulyt_connection_between_business_and_consultants/pages/signin/consultantSetUp.dart';
 import 'package:consulyt_connection_between_business_and_consultants/theme/Fonts.dart';
 import 'package:consulyt_connection_between_business_and_consultants/theme/color.dart';
 import 'package:consulyt_connection_between_business_and_consultants/theme/text.dart';
@@ -41,7 +43,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Consulyt",
       theme: themeData,
-      home: BusinessSetUp(
+      home: BusinessOrConsultant(
         fonts: fonts,
         themeData: themeData
         ),

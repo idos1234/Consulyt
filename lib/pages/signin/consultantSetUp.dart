@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:consulyt_connection_between_business_and_consultants/data/users.dart';
 import 'package:consulyt_connection_between_business_and_consultants/pages/signin/businessSetUp.dart';
 import 'package:consulyt_connection_between_business_and_consultants/theme/Fonts.dart';
 import 'package:flutter/material.dart';
@@ -88,6 +90,8 @@ class _ConsultantSetUpState extends State<ConsultantSetUp> {
     
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+
+    var db = FirebaseFirestore.instance.collection('Consultants');
 
     return Scaffold(
       backgroundColor: widget.themeData.colorScheme.surface,
@@ -365,12 +369,39 @@ class _ConsultantSetUpState extends State<ConsultantSetUp> {
             ),
           ),
 
+          
+          SizedBox(height: height/10),
+
+          FilledButton(
+            onPressed: () {
+              if(unansweredQuestions.isNotEmpty) {} else {
+                final consultant = Consultant(
+                  name: name.text, 
+                  industry: industry!, 
+                  yearsOfExperience: years!,
+                  qualificationsOrCertifications: qualificationsOrCertifications.text,
+                  rates: rates.text,
+                  specializations: specializations.text,
+                  location: Location(city: city.text, state: state.text, country: country.text),
+                  availability: availability.text
+                );
+
+                db.add(consultant.toJson());
+              }
+            },
+            style: ButtonStyle(
+                backgroundColor: WidgetStateProperty.all(unansweredQuestions.isEmpty ? widget.themeData.colorScheme.primary : Colors.grey),
+            ),
+            child: Text(
+              'Continue',
+              style: widget.fonts.body,
+            )
+          ),
           Text(
-            unansweredQuestions.toString(),
-            style: widget.fonts.title!.copyWith(fontWeight: FontWeight.bold),
+            unansweredQuestions.isNotEmpty ? 'Unanswered questions: ${unansweredQuestions.join(", ")}' : '',
+            style: widget.fonts.title!.copyWith(fontWeight: FontWeight.bold, color: widget.themeData.colorScheme.error),
             textAlign: TextAlign.left,
           ),
-
         ],
       ),
     );

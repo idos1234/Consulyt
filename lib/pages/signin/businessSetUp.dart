@@ -143,7 +143,7 @@ class _BusinessSetUpState extends State<BusinessSetUp> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
-    var db = FirebaseFirestore.instance.collection('Business');
+    var db = FirebaseFirestore.instance.collection('Businesses');
 
 
     return Scaffold(
@@ -428,8 +428,7 @@ class _BusinessSetUpState extends State<BusinessSetUp> {
                   budgetRange: BudgetRange(min: int.parse(min.text), max: int.parse(max.text))
                 );
 
-                final j = owner.toJson();
-                db.add(j);
+                db.add(owner.toJson());
               }
             },
             style: ButtonStyle(
