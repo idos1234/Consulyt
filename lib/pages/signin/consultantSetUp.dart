@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:consulyt_connection_between_business_and_consultants/data/users.dart';
-import 'package:consulyt_connection_between_business_and_consultants/pages/signin/businessSetUp.dart';
+import 'package:consulyt_connection_between_business_and_consultants/pages/signIn/businessSetUp.dart';
 import 'package:consulyt_connection_between_business_and_consultants/theme/Fonts.dart';
 import 'package:flutter/material.dart';
 

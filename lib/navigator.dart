@@ -1,13 +1,28 @@
-import 'package:consulyt_connection_between_business_and_consultants/pages/signin/businessOrConsultant.dart';
-import 'package:consulyt_connection_between_business_and_consultants/pages/signin/businessSetUp.dart';
-import 'package:consulyt_connection_between_business_and_consultants/pages/signin/consultantSetUp.dart';
+import 'package:consulyt_connection_between_business_and_consultants/pages/home.dart';
+import 'package:consulyt_connection_between_business_and_consultants/pages/signIn/googleSignIn/googleSignInPage.dart';
+import 'package:consulyt_connection_between_business_and_consultants/pages/signin/googleSignIn/googleSignInService.dart';
 import 'package:consulyt_connection_between_business_and_consultants/theme/Fonts.dart';
 import 'package:consulyt_connection_between_business_and_consultants/theme/color.dart';
 import 'package:consulyt_connection_between_business_and_consultants/theme/text.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  User? user;
+  
+  @override
+  void initState() {
+    super.initState();
+
+    user = GoogleSignInService().getUser();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,12 +58,22 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Consulyt",
       theme: themeData,
-      home: BusinessOrConsultant(
+      home: GoogleSignInService().getUser() == null? GoogleSignInScreen(
         fonts: fonts,
-        themeData: themeData
-        ),
+        themeData: themeData,
+        onPressed: () {
+          setState(() {
+            user = GoogleSignInService().getUser();
+          });
+        }
+      )
+      : Home(
+        onPressed: () {
+          setState(() {
+            user = GoogleSignInService().getUser();
+          });
+        }
+      )
     );
   }
-
-  
 }

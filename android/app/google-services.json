@@ -12,7 +12,12 @@
           "package_name": "com.example.consulyt_connection_between_business_and_consultants"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "180512000245-3a1i577uloa352fp5snl8m2qf95e225v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDndyokmhzDfJdhEmLiInfzqggdEU1rAnw"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "180512000245-3a1i577uloa352fp5snl8m2qf95e225v.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "180512000245-spinc21ma2jkhqj8t8bqmqfsr3oqlqs6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.consulytConnectionBetweenBusinessAndConsultants"
+              }
+            }
+          ]
         }
       }
     }
