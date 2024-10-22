@@ -18,24 +18,63 @@ class GoogleSignInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: themeData.colorScheme.surface,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            //google sign in button
-            ElevatedButton(
-              onPressed: () async {
-                await GoogleSignInService().signInWithGoogle();
-                onPressed();
-              },
-               child: Text('Google sign in', style: fonts.title!.copyWith(fontWeight: FontWeight.w600),)
-            )
+            GoogleSignInButton(fonts: fonts, onPressed: onPressed)
           ],
         ),
       ),
     );
+  }
+}
+
+class GoogleSignInButton extends StatelessWidget {
+  Fonts fonts;
+  Function onPressed;
+
+  GoogleSignInButton(
+    {
+      super.key,
+      required this.fonts,
+      required this.onPressed
+    }
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    double width = MediaQuery.sizeOf(context).width;
+
+    return ElevatedButton(
+              onPressed: () async {
+                await GoogleSignInService().signInWithGoogle();
+                onPressed();
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  SizedBox(
+                    width: width/5,
+                    child: Image.network(
+                        'http://pngimg.com/uploads/google/google_PNG19635.png',
+                        fit:BoxFit.cover
+                    )               
+                  ),
+                  SizedBox(
+                    width: 5.0,
+                  ),
+                  Text(
+                    'Sign-in with Google',
+                    style: fonts.title,
+                    )
+                ],
+              )
+            );
   }
 
 }
