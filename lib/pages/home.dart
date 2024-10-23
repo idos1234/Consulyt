@@ -1,12 +1,9 @@
-import 'package:consulyt_connection_between_business_and_consultants/pages/signin/googleSignIn/googleSignInService.dart';
+import 'package:consulyt_connection_between_business_and_consultants/pages/signin/authService.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
-  Function onPressed;
-
   Home(
     {
-      required this.onPressed,
       super.key
     }
   );
@@ -15,8 +12,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () async {
-        await GoogleSignInService().signOut();
-        onPressed();
+        await Authservice().signOut();
       },
       child: const Text('Sign out')
     );

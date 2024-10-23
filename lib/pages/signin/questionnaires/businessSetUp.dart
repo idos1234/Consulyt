@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:consulyt_connection_between_business_and_consultants/data/users.dart';
 import 'package:flutter/material.dart';
-import '../../theme/Fonts.dart';
+import '../../../../theme/Fonts.dart';
 
 class BusinessSetUp extends StatefulWidget {
   ThemeData themeData;

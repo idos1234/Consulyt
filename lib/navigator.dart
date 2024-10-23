@@ -1,6 +1,6 @@
 import 'package:consulyt_connection_between_business_and_consultants/pages/home.dart';
-import 'package:consulyt_connection_between_business_and_consultants/pages/signIn/googleSignIn/googleSignInPage.dart';
-import 'package:consulyt_connection_between_business_and_consultants/pages/signin/googleSignIn/googleSignInService.dart';
+import 'package:consulyt_connection_between_business_and_consultants/pages/signin/authService.dart';
+import 'package:consulyt_connection_between_business_and_consultants/pages/signin/signInPage.dart';
 import 'package:consulyt_connection_between_business_and_consultants/theme/Fonts.dart';
 import 'package:consulyt_connection_between_business_and_consultants/theme/color.dart';
 import 'package:consulyt_connection_between_business_and_consultants/theme/text.dart';
@@ -21,7 +21,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
 
-    user = GoogleSignInService().getUser();
+    user = Authservice().getUser();
   }
 
   @override
@@ -58,20 +58,17 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: "Consulyt",
       theme: themeData,
-      home: GoogleSignInService().getUser() == null? GoogleSignInScreen(
-        fonts: fonts,
-        themeData: themeData,
-        onPressed: () {
-          setState(() {
-            user = GoogleSignInService().getUser();
-          });
-        }
-      )
-      : Home(
-        onPressed: () {
-          setState(() {
-            user = GoogleSignInService().getUser();
-          });
+      home: StreamBuilder<User?> (
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if(!snapshot.hasData) {
+            return SignInScreen(
+              fonts: fonts,
+              themeData: themeData
+            );
+          } else {
+            return Home();
+          }
         }
       )
     );
